@@ -2,6 +2,7 @@ package trafficlight.states;
 
 //TODO implement a part of the pattern here
 
+//Subject?
 public abstract class State {
 
     public abstract State getNextState();

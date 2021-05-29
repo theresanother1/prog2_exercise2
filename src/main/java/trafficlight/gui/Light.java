@@ -4,6 +4,7 @@ package trafficlight.gui;
 import javax.swing.*;
 import java.awt.*;
 
+
 class Light extends JPanel {
     Color on;
     int radius = 40;

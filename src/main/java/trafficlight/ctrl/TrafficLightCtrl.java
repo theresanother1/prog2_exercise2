@@ -3,6 +3,7 @@ package trafficlight.ctrl;
 import trafficlight.gui.TrafficLightGui;
 import trafficlight.states.State;
 
+
 public class TrafficLightCtrl {
 
     private State greenState;
