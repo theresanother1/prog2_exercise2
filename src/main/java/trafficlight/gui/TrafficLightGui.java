@@ -1,13 +1,14 @@
 package trafficlight.gui;
 
 import trafficlight.ctrl.TrafficLightCtrl;
+import trafficlight.states.State;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TrafficLightGui extends JFrame implements ActionListener {
+public class TrafficLightGui extends JFrame implements ActionListener, Observer{
 
     public static final String ACTION_COMMAND_STOP = "stop";
 
@@ -31,6 +32,22 @@ public class TrafficLightGui extends JFrame implements ActionListener {
 
     private void initLights(TrafficLightCtrl ctrl) {
         //TODO implement a part of the pattern here
+        //initialize Colors
+        red = new TrafficLight(Color.red);
+        yellow = new TrafficLight(Color.yellow);
+        green = new TrafficLight(Color.green);
+        State.addObserver(TrafficLightGui.this);
+      //  State.addObserver(green);
+      //  State.addObserver(yellow);
+       // State.addObserver(red);
+
+
+
+       // trafficLightCtrl.getGreenState().notifyObservers();
+        red.turnOn(false);
+        yellow.turnOn(false);
+        green.turnOn(true);
+       // update();
         //create the TrafficLight
         //connect subject and observer
     }
@@ -66,5 +83,28 @@ public class TrafficLightGui extends JFrame implements ActionListener {
         if (ACTION_COMMAND_STOP.equals(e.getActionCommand())){
            trafficLightCtrl.stop();
         }
+    }
+
+    @Override
+    public void update(String string){
+        System.out.println("Updating TrafficLightGUi");
+        if (string.equals(trafficLightCtrl.getGreenState().getColor())){
+            green.turnOn(true);
+            yellow.turnOn(false);
+            red.turnOn(false);
+        }
+        if (string.equals(trafficLightCtrl.getYellowState().getColor())){
+            green.turnOn(false);
+            yellow.turnOn(true);
+            red.turnOn(false);
+        }
+        if (string.equals(trafficLightCtrl.getRedState().getColor())){
+            green.turnOn(false);
+            yellow.turnOn(false);
+            red.turnOn(true);
+        }
+
+
+
     }
 }

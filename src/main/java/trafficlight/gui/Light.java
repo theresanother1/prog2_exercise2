@@ -31,4 +31,5 @@ class Light extends JPanel {
         }
         g.fillOval( border,border,2*radius,2*radius );
     }
+
 }

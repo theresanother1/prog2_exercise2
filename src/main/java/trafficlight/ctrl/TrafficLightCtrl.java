@@ -20,12 +20,16 @@ public class TrafficLightCtrl {
 
     private boolean doRun = true;
 
+
     public TrafficLightCtrl() {
         super();
         initStates();
         gui = new TrafficLightGui(this);
         gui.setVisible(true);
+
         //TODO useful to update the current state
+        //initial State is updated in initStates() ??
+
     }
 
     private void initStates() {
@@ -34,6 +38,10 @@ public class TrafficLightCtrl {
             public State getNextState() {
                 previousState = currentState;
                 //TODO useful to update the current state and the old one
+                currentState = greenState;
+                //notify Observers
+                System.out.println("Green State: " + greenState);
+                notifyObservers(getColor());
                 return yellowState;
             }
             @Override
@@ -47,6 +55,10 @@ public class TrafficLightCtrl {
             public State getNextState() {
                 previousState = currentState;
                 //TODO useful to update the current state and the old one
+                currentState = redState;
+                //notify Observers
+                System.out.println("Red State: " + redState);
+                notifyObservers(getColor());
                 return yellowState;
             }
             @Override
@@ -61,10 +73,18 @@ public class TrafficLightCtrl {
                 if (previousState.equals(greenState)) {
                     previousState = currentState;
                     //TODO useful to update the current state and the old one
+                    currentState = yellowState;
+                    //notify Observers
+                    System.out.println("YellowState: with red after" + yellowState);
+                    notifyObservers(getColor());
                     return redState;
                 }else {
                     previousState = currentState;
                     //TODO useful to update the current state and the old one
+                    currentState = yellowState;
+                    //notify aufrufen
+                    System.out.println("YellowState: with green after" + yellowState);
+                    notifyObservers(getColor());
                     return greenState;
                 }
             }
@@ -110,4 +130,5 @@ public class TrafficLightCtrl {
     public void stop() {
         doRun = false;
     }
+
 }
