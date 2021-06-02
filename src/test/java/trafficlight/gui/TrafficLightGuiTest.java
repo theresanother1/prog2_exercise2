@@ -15,9 +15,7 @@ import java.util.NoSuchElementException;
 public class TrafficLightGuiTest {
     private TrafficLightGui myTestGui;
     private TrafficLightCtrl myTestCtrl;
-    private TrafficLight myTestLight1;
-    private TrafficLight myTestLight2;
-    private TrafficLight myTestLight3;
+
 
 
     @BeforeEach
