@@ -32,6 +32,5 @@ public abstract class State extends Subject{
         }
     }
 
-
 }
 //State sollte Subject sein -> State ändert sich

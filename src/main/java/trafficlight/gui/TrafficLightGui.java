@@ -7,8 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.NoSuchElementException;
 
-public class TrafficLightGui extends JFrame implements ActionListener, Observer{
+public class TrafficLightGui extends JFrame implements ActionListener, Observer {
 
     public static final String ACTION_COMMAND_STOP = "stop";
 
@@ -31,25 +32,20 @@ public class TrafficLightGui extends JFrame implements ActionListener, Observer{
     }
 
     private void initLights(TrafficLightCtrl ctrl) {
-        //TODO implement a part of the pattern here
+        //TODO implement a part of the pattern here - done?
         //initialize Colors
         red = new TrafficLight(Color.red);
         yellow = new TrafficLight(Color.yellow);
         green = new TrafficLight(Color.green);
+        //connect subject and observer
         State.addObserver(TrafficLightGui.this);
+
+        //State.addObserver(ctrl.getGreenState().getNextState());
       //  State.addObserver(green);
       //  State.addObserver(yellow);
        // State.addObserver(red);
-
-
-
-       // trafficLightCtrl.getGreenState().notifyObservers();
-        red.turnOn(false);
-        yellow.turnOn(false);
-        green.turnOn(true);
-       // update();
         //create the TrafficLight
-        //connect subject and observer
+
     }
 
     private void init() {
@@ -84,6 +80,7 @@ public class TrafficLightGui extends JFrame implements ActionListener, Observer{
            trafficLightCtrl.stop();
         }
     }
+
 
     @Override
     public void update(String string){

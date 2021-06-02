@@ -11,7 +11,7 @@ public abstract class Subject {
     //eventuell teilweise schon implementieren
     public static <T extends Observer> void addObserver(T t){
         lights.add(t);
-        System.out.println(lights);;
+      //  System.out.println(lights);
     }
     public static <T extends Observer> void removeObserver(T t){
         lights.remove(t);

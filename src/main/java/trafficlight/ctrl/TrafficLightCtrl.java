@@ -20,8 +20,21 @@ public class TrafficLightCtrl {
 
     private boolean doRun = true;
 
+    private static TrafficLightCtrl singletonTrafficLightCtrl = null;
+    private TrafficLightCtrl (){
+        super();
+        initStates();
+        gui = new TrafficLightGui(this);
+        gui.setVisible(true);
+    }
+    public static TrafficLightCtrl getInstance(){
+        if (singletonTrafficLightCtrl == null){
+            singletonTrafficLightCtrl = new TrafficLightCtrl();
+        }
+        return singletonTrafficLightCtrl;
+    }
 
-    public TrafficLightCtrl() {
+ /*   public TrafficLightCtrl() {
         super();
         initStates();
         gui = new TrafficLightGui(this);
@@ -30,14 +43,14 @@ public class TrafficLightCtrl {
         //TODO useful to update the current state
         //initial State is updated in initStates() ??
 
-    }
+    }*/
 
     private void initStates() {
         greenState = new State() {
             @Override
             public State getNextState() {
                 previousState = currentState;
-                //TODO useful to update the current state and the old one
+                //TODO useful to update the current state and the old one - done?
                 currentState = greenState;
                 //notify Observers
                 System.out.println("Green State: " + greenState);
@@ -54,7 +67,7 @@ public class TrafficLightCtrl {
             @Override
             public State getNextState() {
                 previousState = currentState;
-                //TODO useful to update the current state and the old one
+                //TODO useful to update the current state and the old one - done?
                 currentState = redState;
                 //notify Observers
                 System.out.println("Red State: " + redState);
@@ -72,7 +85,7 @@ public class TrafficLightCtrl {
             public State getNextState() {
                 if (previousState.equals(greenState)) {
                     previousState = currentState;
-                    //TODO useful to update the current state and the old one
+                    //TODO useful to update the current state and the old one - done?
                     currentState = yellowState;
                     //notify Observers
                     System.out.println("YellowState: with red after" + yellowState);
@@ -80,7 +93,7 @@ public class TrafficLightCtrl {
                     return redState;
                 }else {
                     previousState = currentState;
-                    //TODO useful to update the current state and the old one
+                    //TODO useful to update the current state and the old one - done?
                     currentState = yellowState;
                     //notify aufrufen
                     System.out.println("YellowState: with green after" + yellowState);
