@@ -12,7 +12,7 @@ class Light extends JPanel {
     boolean isOn = false;
 
     Light(Color color){
-
+        //added for testing
         if (color == null){
             throw new NullPointerException("TrafficLight needs a color!");
         }
