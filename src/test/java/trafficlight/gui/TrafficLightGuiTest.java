@@ -15,6 +15,7 @@ import java.util.NoSuchElementException;
 public class TrafficLightGuiTest {
     private TrafficLightGui myTestGui;
     private TrafficLightCtrl myTestCtrl;
+    private TrafficLightCtrl myTestCtrl2;
 
 
 
@@ -30,5 +31,11 @@ public class TrafficLightGuiTest {
         assertThrows(NullPointerException.class, () -> new TrafficLight(null));
     }
 
+    @Test
+    @DisplayName("Singleton is not implemented correctly.")
+    public void testSingleton(){
+        myTestCtrl2 = TrafficLightCtrl.getInstance();
+        assertEquals(myTestCtrl, myTestCtrl2);
+    }
 
 }
