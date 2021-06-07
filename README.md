@@ -1,3 +1,3 @@
-https://github.com/theresanother1/prog2_exercise2
+https://github.com/theresanother1/prog2_exercise2_theresa
 
  
